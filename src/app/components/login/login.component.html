@@ -1,0 +1,41 @@
+<div class="col-8">
+    <div class="card">
+        <div class="card-header">
+            Login Here
+        </div>
+        <div class="card-body">
+            <form #loginForm="ngForm" (ngSubmit)="submitLogin()">
+                <div class="alert alert-danger" [hidden]="!error">
+                    {{error}}
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="form.email" required>
+                 
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+
+                
+              </form>
+<br><br>
+              <button class="btn btn-primary btn-social-icon btn-google mx-1" (click)="signWithGoogle()">
+                <span class="fab fa-google">SignIn With Google</span>
+              </button>
+
+              <button type="button" (click)="signInWithFB()" class="btn btn-primary btn-block">Signin with Facebook</button>
+
+        </div>
+
+        <div *ngIf="isLoggedin === true">
+          <div>
+            <h4>{{ user }}</h4>
+          </div>
+          <button type="button" (click)="signOut()" class="btn btn-primary">Sign Out</button>
+        </div>
+    </div>
+</div>
